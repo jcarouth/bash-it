@@ -55,7 +55,7 @@ PROMPT_COMMAND=prompt_setter
 
 git_prompt_status() {
 
-  if [ -n "$(git status | grep 'Changes not staged' 2> /dev/null)" ]; then
+  if [ -n "$(git status | grep -E 'Changes not staged|Changed but not updated' 2> /dev/null)" ]; then
     git_status="${bold_red}$(scm_prompt_info) ✗"
   elif [ -n "$(git status | grep 'Changes to be committed' 2> /dev/null)" ]; then
      git_status="${bold_yellow}$(scm_prompt_info) ^"
