@@ -4,7 +4,7 @@
 alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -al'
+alias ll='ls -ahl'
 alias l='ls -a'
 alias l1='ls -1'
 
@@ -52,7 +52,7 @@ function aliases-help() {
   echo "  sl      = ls"
   echo "  ls      = ls -G"
   echo "  la      = ls -AF"
-  echo "  ll      = ls -al"
+  echo "  ll      = ls -ahl"
   echo "  l       = ls -a"
   echo "  c/k/cls = clear"
   echo "  ..      = cd .."
