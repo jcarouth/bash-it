@@ -138,7 +138,7 @@ function hg_prompt_info() {
 
 function scm_char {
   scm_prompt_char
-  echo -e "$SCM_CHAR"
+  echo "$SCM_CHAR"
 }
 
 function prompt_char {
