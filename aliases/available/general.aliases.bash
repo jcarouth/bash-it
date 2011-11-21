@@ -46,7 +46,7 @@ alias -- -="cd -"        # Go back
 alias h='history'
 
 # Tree
-if [ ! -x "$(which tree)" ]
+if [ ! -x "$(which tree >/dev/null 2>&1)" ]
 then
   alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi
