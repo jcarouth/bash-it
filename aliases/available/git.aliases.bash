@@ -26,10 +26,11 @@ alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
+alias grma='git ls-files --deleted | xargs git rm'
 
 case $OSTYPE in
   linux*)
-    alias gd='git diff | vim -R -'
+    alias gd='git diff | vim'
     ;;
   darwin*)
     alias gd='git diff'
@@ -69,5 +70,6 @@ function git-help() {
   echo "  gpo     = git push origin"
   echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
+  echo "  grma    = git ls-files --deleted | xargs git rm"
   echo
 }

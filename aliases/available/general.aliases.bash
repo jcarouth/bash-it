@@ -4,7 +4,7 @@
 alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -al'
+alias ll='ls -ahl'
 alias l='ls -a'
 alias l1='ls -1'
 
@@ -46,7 +46,7 @@ alias -- -="cd -"        # Go back
 alias h='history'
 
 # Tree
-if [ ! -x "$(which tree)" ]
+if [ ! -x "$(which tree >/dev/null 2>&1)" ]
 then
   alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi
@@ -56,27 +56,27 @@ alias	md='mkdir -p'
 alias	rd=rmdir
 
 function aliases-help() {
-echo "Generic Alias Usage"
-echo
-echo "  sl      = ls"
-echo "  ls      = ls -G"
-echo "  la      = ls -AF"
-echo "  ll      = ls -al"
-echo "  l       = ls -a"
-echo "  c/k/cls = clear"
-echo "  ..      = cd .."
-echo "  ...     = cd ../.."
-echo "  -       = cd -"
-echo "  h       = history"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo "  editor  = $EDITOR"
-echo "  pager   = $PAGER"
-echo "  piano   = pianobar"
-echo "  q       = exit"
-echo "  irc     = $IRC_CLIENT"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo "  rb      = ruby"
-echo
+  echo "Generic Alias Usage"
+  echo
+  echo "  sl      = ls"
+  echo "  ls      = ls -G"
+  echo "  la      = ls -AF"
+  echo "  ll      = ls -ahl"
+  echo "  l       = ls -a"
+  echo "  c/k/cls = clear"
+  echo "  ..      = cd .."
+  echo "  ...     = cd ../.."
+  echo "  -       = cd -"
+  echo "  h       = history"
+  echo "  md      = mkdir -p"
+  echo "  rd      = rmdir"
+  echo "  editor  = $EDITOR"
+  echo "  pager   = $PAGER"
+  echo "  piano   = pianobar"
+  echo "  q       = exit"
+  echo "  irc     = $IRC_CLIENT"
+  echo "  md      = mkdir -p"
+  echo "  rd      = rmdir"
+  echo "  rb      = ruby"
+  echo
 }
