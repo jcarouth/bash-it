@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Initialize Bash It
 
 # Reload Library
@@ -20,6 +20,9 @@ then
     export BASH_IT_THEME="$BASH_THEME";
     unset $BASH_THEME;
 fi
+
+# Load composure first, so we support function metadata
+source "${BASH_IT}/lib/composure.sh"
 
 # Load colors first so they can be use in base theme
 source "${BASH_IT}/themes/colors.theme.bash"
@@ -79,11 +82,13 @@ function bash-it() {
   echo
   echo "Here is a list of commands you can use to get help screens for specific pieces of Bash it:"
   echo
-  echo "  rails-help                  This will list out all the aliases you can use with rails."
-  echo "  git-help                    This will list out all the aliases you can use with git."
-  echo "  todo-help                   This will list out all the aliases you can use with todo.txt-cli"
-  echo "  brew-help                   This will list out all the aliases you can use with Homebrew"
-  echo "  aliases-help                Generic list of aliases."
-  echo "  plugins-help                This will list out all the plugins and functions you can use with bash-it"
+  echo "  rails-help                  list out all aliases you can use with rails."
+  echo "  git-help                    list out all aliases you can use with git."
+  echo "  todo-help                   list out all aliases you can use with todo.txt-cli"
+  echo "  brew-help                   list out all aliases you can use with Homebrew"
+  echo "  aliases-help                generic list of aliases."
+  echo "  plugins-help                list out all functions you have installed with bash-it"
+  echo "  bash-it-plugins             summarize bash-it plugins, and their installation status"
+  echo "  reference <function name>   detailed help for a specific function"
   echo
 }
