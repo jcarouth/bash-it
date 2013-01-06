@@ -29,14 +29,18 @@ alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias grma='git ls-files --deleted | xargs git rm'
 
-case $OSTYPE in
-  linux*)
-    alias gd='git diff | vim'
-    ;;
-  darwin*)
-    alias gd='git diff'
-    ;;
-  darwin*)
-    alias gd='git diff'
-    ;;
-esac
+if [ -z "$EDITOR" ]; then
+    case $OSTYPE in
+      linux*)
+        alias gd='git diff | vim -R -'
+        ;;
+      darwin*)
+        alias gd='git diff | mate'
+        ;;
+      *)
+        alias gd='git diff'
+        ;;
+    esac
+else
+    alias gd="git diff | $EDITOR"
+fi
