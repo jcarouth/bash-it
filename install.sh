@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 BASH_IT="$HOME/.bash_it"
 
-test -w $HOME/.bash_profile &&
-  cp $HOME/.bash_profile $HOME/.bash_profile.bak &&
-  echo "Your original .bash_profile has been backed up to .bash_profile.bak"
+case $OSTYPE in
+  darwin*)
+    CONFIG_FILE=.bash_profile
+    ;;
+  *)
+    CONFIG_FILE=.bashrc
+    ;;
+esac
 
-cp $HOME/.bash_it/template/bash_profile.template.bash $HOME/.bash_profile
+test -w $HOME/$CONFIG_FILE &&
+  cp $HOME/$CONFIG_FILE $HOME/$CONFIG_FILE.bak &&
+  echo "Your original $CONFIG_FILE has been backed up to $CONFIG_FILE.bak"
 
-echo "Copied the template .bash_profile into ~/.bash_profile, edit this file to customize bash-it"
+cp $HOME/.bash_it/template/bash_profile.template.bash $HOME/$CONFIG_FILE
+
+echo "Copied the template $CONFIG_FILE into ~/$CONFIG_FILE, edit this file to customize bash-it"
 
 while true
 do
@@ -36,7 +45,7 @@ function load_all() {
       [ ${filename:0:1} = "_" ] && continue
       dest="${BASH_IT}/${file_type}/enabled/${filename}"
       if [ ! -e "${dest}" ]; then
-          ln -s "${src}" "${dest}"
+          ln -s "../available/${filename}" "${dest}"
       else
           echo "File ${dest} exists, skipping"
       fi
@@ -57,7 +66,7 @@ function load_some() {
         read -p "Would you like to enable the ${file_name%%.*} $file_type? [Y/N] " RESP
         case $RESP in
         [yY])
-          ln -s "$path" "$BASH_IT/$file_type/enabled"
+          ln -s "../available/${file_name}" "$BASH_IT/$file_type/enabled"
           break
           ;;
         [nN])

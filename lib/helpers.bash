@@ -80,7 +80,7 @@ _is_function ()
     _about 'sets $? to true if parameter is the name of a function'
     _param '1: name of alleged function'
     _group 'lib'
-    [ -n "$(type -a $1 2>/dev/null | grep 'is a function')" ]
+    [ -n "$(LANG=C type -t $1 2>/dev/null | grep 'function')" ]
 }
 
 _bash-it-aliases ()
@@ -261,7 +261,7 @@ _enable-thing ()
         do
             plugin=$(basename $f)
             if [ ! -h $BASH_IT/$subdirectory/enabled/$plugin ]; then
-                ln -s $BASH_IT/$subdirectory/available/$plugin $BASH_IT/$subdirectory/enabled/$plugin
+                ln -s ../available/$plugin $BASH_IT/$subdirectory/enabled/$plugin
             fi
         done
     else
@@ -279,7 +279,7 @@ _enable-thing ()
 
         mkdir -p $BASH_IT/$subdirectory/enabled
 
-        ln -s $BASH_IT/$subdirectory/available/$plugin $BASH_IT/$subdirectory/enabled/$plugin
+        ln -s ../available/$plugin $BASH_IT/$subdirectory/enabled/$plugin
     fi
 
     printf '%s\n' "$file_entity enabled."
